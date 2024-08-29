@@ -289,10 +289,7 @@ async def books(message: Message):
         last_books = last_books.json()
         inline_buttons = []
         for book in last_books:
-            inline_buttons.append(
-                [InlineKeyboardButton(text=f'{book["author"]} - {book["title"]}',
-                                      callback_data=f'detail_{book['id']}')]
-            )
+            inline_buttons.append([InlineKeyboardButton(text=f'{book["author"]} - {book["title"]}',callback_data=f'detail_{book['id']}')])
         inline_keyboard = InlineKeyboardMarkup(inline_keyboard=inline_buttons, )
         async with ChatActionSender(bot=bot, chat_id=message.from_user.id, action='typing'):
             await asyncio.sleep(2)
